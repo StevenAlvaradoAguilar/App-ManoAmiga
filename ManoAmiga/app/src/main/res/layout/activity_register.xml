@@ -17,7 +17,9 @@
         android:hint="Name"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:textSize="25dp" />
+        android:textColor="#FF8F6152"
+        android:textSize="25dp"
+        android:textStyle="bold|italic" />
 
     <EditText
         android:id="@+id/lastName"
@@ -28,7 +30,9 @@
         android:hint="LastName"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:textSize="25dp" />
+        android:textColor="#FF8F6152"
+        android:textSize="25dp"
+        android:textStyle="bold|italic" />
 
     <EditText
         android:id="@+id/email"
@@ -39,7 +43,9 @@
         android:hint="Email"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
-        android:textSize="25dp" />
+        android:textColor="#FF8F6152"
+        android:textSize="25dp"
+        android:textStyle="bold|italic" />
 
     <EditText
         android:id="@+id/password"
@@ -51,24 +57,27 @@
         android:hint="Password "
         android:inputType="textPassword"
         android:minHeight="48dp"
-        android:textSize="25dp" />
+        android:textColor="#FF8F6152"
+        android:textSize="25dp"
+        android:textStyle="bold|italic" />
 
     <Button
         android:id="@+id/registerbtn"
-        android:layout_width="wrap_content"
+        android:layout_width="222dp"
         android:layout_height="wrap_content"
         android:layout_above="@+id/imageView3"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="98dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="102dp"
+        android:layout_marginEnd="91dp"
         android:layout_marginBottom="50dp"
-        android:backgroundTint="#51839A"
+        android:backgroundTint="#FF83C5BE"
         android:minHeight="48dp"
         android:text="Register"
-        android:textColor="#000000"
-        android:textSize="15dp" />
+        android:textColor="#FFFFFF"
+        android:textSize="18dp"
+        android:textStyle="bold|italic" />
 
     <TextView
         android:id="@+id/status"
@@ -77,8 +86,10 @@
         android:layout_above="@+id/imageView3"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="5dp"
-        android:text="Register"
-        android:textSize="25dp" />
+        android:text="@string/register"
+        android:textColor="#FF8F6152"
+        android:textSize="25dp"
+        android:textStyle="bold|italic" />
 
     <ImageView
         android:id="@+id/imageView3"
