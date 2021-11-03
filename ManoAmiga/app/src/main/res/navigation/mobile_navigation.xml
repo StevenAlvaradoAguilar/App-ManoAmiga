@@ -12,14 +12,21 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.registeractivity.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_contacts" />
+        android:id="@+id/navigation_generate_alert"
+        android:name="com.example.registeractivity.GenerateAlertFragment"
+        android:label="Generar Alerta"
+        tools:layout="@layout/fragment_generate_alert" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.registeractivity.NotificationFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_accept_alert"
+        android:name="com.example.registeractivity.ContactsFragment"
+        android:label="Aceptar Alerta"
+        tools:layout="@layout/fragment_accept_alert" />
+
+    <fragment
+        android:id="@+id/navigation_contact"
+        android:name="com.example.registeractivity.ContactsFragment"
+        android:label="Contactos"
+        tools:layout="@layout/fragment_contacts" />
+
 </navigation>
