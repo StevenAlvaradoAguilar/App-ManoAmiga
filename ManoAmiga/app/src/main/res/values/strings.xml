@@ -8,4 +8,8 @@
     <string name="home_fragment">Home Fragment</string>
     <string name="register">Register</string>
     <string name="title_alert">Alerta</string>
+    <string name="alert">Alert</string>
+    <string name="en_el_momento_que_te_sientas_en_peligro_presiona_el_bot_n_de_abajo_para_generar_una_alerta">En el momento que te sientas en peligro presiona el botón de abajo para generar una alerta</string>
+    <string name="todo">TODO</string>
+    <string name="todo1">TODO</string>
 </resources>

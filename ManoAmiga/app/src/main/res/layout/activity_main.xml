@@ -38,7 +38,7 @@
         android:layout_below="@+id/editText"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
-        android:text="Enter room"
+        android:text="Enviar Alerta"
         android:textColor="#ffffff"
         android:background="@color/cardview_light_background"
         android:id="@+id/enterBtn" />

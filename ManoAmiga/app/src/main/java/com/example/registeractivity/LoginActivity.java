@@ -78,7 +78,7 @@ public class LoginActivity extends AppCompatActivity {
         protected String doInBackground(String... strings) {
             String email = emaillogin.getText().toString();
             String password = passwordlogin.getText().toString();
-            con = connectionClass(ConnectionSQLServer.username.toString(), ConnectionSQLServer.password.toString(), ConnectionSQLServer.database.toString(), ConnectionSQLServer.ip.toString(), ConnectionSQLServer.port.toString());
+            con = connectionClass(ConnectionSQLServer.username, ConnectionSQLServer.password, ConnectionSQLServer.database, ConnectionSQLServer.ip, ConnectionSQLServer.port);
             if (con == null) {
                 runOnUiThread(new Runnable() {
                     @Override
@@ -89,7 +89,7 @@ public class LoginActivity extends AppCompatActivity {
                 z = "On Internet Connection";
             } else {
                 try {
-                    String sql = "SELECT * from registroUsuario WHERE email = '" + emaillogin.getText() + "' AND password = '" + passwordlogin.getText() + "'";
+                    String sql = "SELECT * from RegisterUser WHERE email = '" + emaillogin.getText() + "' AND password = '" + passwordlogin.getText() + "'";
                     Statement stmt = con.createStatement();
                     ResultSet rs   = stmt.executeQuery(sql);
 
@@ -133,7 +133,7 @@ public class LoginActivity extends AppCompatActivity {
             String connectionURL;
             try {
                 Class.forName("net.sourceforge.jtds.jdbc.Driver");
-                connectionURL = "jdbc:jtds:sqlserver://" + server + ":"+ port + ";" + "database name =" + database + ";username =" + username + ";password =" + password + ";";
+                connectionURL = "jdbc:jtds:sqlserver://" + server + "/"+ port + ";" + "database name: =" + database + ";username =" + username + ";password =" + password + ";";
                 connection = DriverManager.getConnection(connectionURL);
             } catch (Exception e) {
                 Log.e("SQL Connection Error", e.getMessage());

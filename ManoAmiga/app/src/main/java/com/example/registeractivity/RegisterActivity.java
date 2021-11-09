@@ -1,12 +1,14 @@
 package com.example.registeractivity;
 
 import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.util.Patterns;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -27,27 +29,55 @@ public class RegisterActivity extends AppCompatActivity {
     Button registerbtn;
     TextView status;
 
+    EditText editText;
+    TextView atoz, AtoZ, num, charcount;
+
     Connection con;
     Statement stmt;
 
+    //@SuppressLint("CutPasteId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        name        = (EditText)findViewById(R.id.name);
-        lastName    = (EditText)findViewById(R.id.lastName);
-        email       = (EditText)findViewById(R.id.email);
-        password    = (EditText)findViewById(R.id.password);
-        registerbtn = (Button)findViewById(R.id.registerbtn);
-        status      = (TextView)findViewById(R.id.status);
+        name        = findViewById(R.id.name);
+        lastName    = findViewById(R.id.lastName);
+        email       = findViewById(R.id.email);
+        password    = findViewById(R.id.password);
+        registerbtn = findViewById(R.id.registerbtn);
+        status      = findViewById(R.id.status);
 
-        registerbtn.setOnClickListener(new View.OnClickListener() {
+        // initialise layout
+        editText = findViewById(R.id.password);
+        atoz = findViewById(R.id.atoz);
+        AtoZ = findViewById(R.id.AtoZ);
+        num = findViewById(R.id.num);
+        charcount = findViewById(R.id.charcount);
+
+        registerbtn.setOnClickListener(v -> {
+            validateEmailAddress(email);
+            validatepass(password.getText().toString());
+            new RegisterActivity.registerUser().execute("");
+        });
+
+        // when we start typing
+        editText.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onClick(View v)
-            {
-                validateEmailAddress(email);
-                new registerUser().execute("");
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                // get the password when we start typing
+                String password = editText.getText().toString();
+                validatepass(password);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
             }
         });
     }
@@ -64,29 +94,41 @@ public class RegisterActivity extends AppCompatActivity {
         }
     }
 
-    public void registerUserValidations(View view) {
 
-        TextView name = (TextView) findViewById(R.id.name);
-        TextView lastName = (TextView) findViewById(R.id.lastName);
-        TextView email = (TextView) findViewById(R.id.email);
-        TextView password = (TextView) findViewById(R.id.password);
-        TextView status = (TextView) findViewById(R.id.status);
+    public void validatepass(String password) {
 
-        if (name.getText().toString().length() < 1 || lastName.getText().toString().length() < 1 || email.getText().toString().length() < 1 || password.getText().toString().length() < 1) {
-            status.setText("Favor no dejar campos en blanco.");
+        // check for pattern
+        Pattern uppercase = Pattern.compile("[A-Z]");
+        Pattern lowercase = Pattern.compile("[a-z]");
+        Pattern digit = Pattern.compile("[0-9]");
+
+        // if lowercase character is not present
+        if (!lowercase.matcher(password).find()) {
+            atoz.setTextColor(Color.RED);
         } else {
-            String regex_password = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$_–[{}]:;',?/*~$^+=<>]).{8,20}$";
-            Pattern pattern_password = Pattern.compile(regex_password);
+            // if lowercase character is  present
+            atoz.setTextColor(Color.GREEN);
+        }
 
-            String regex_email = "^(.+)@(.+)$";
-            Pattern pattern_email = Pattern.compile(regex_email);
-
-
-            if (!pattern_password.matcher(password.getText().toString()).matches()) {
-                status.setText("Favor ingresar una contraseña con al menos una mayúscula, un símbolo(@, #, $, _, -) y un número de 8 a 20 caracteres.");
-            } else if (!pattern_email.matcher(email.getText().toString()).matches()) {
-                status.setText("Favor ingresar un correo válido");
-            }
+        // if uppercase character is not present
+        if (!uppercase.matcher(password).find()) {
+            AtoZ.setTextColor(Color.RED);
+        } else {
+            // if uppercase character is  present
+            AtoZ.setTextColor(Color.GREEN);
+        }
+        // if digit is not present
+        if (!digit.matcher(password).find()) {
+            num.setTextColor(Color.RED);
+        } else {
+            // if digit is present
+            num.setTextColor(Color.GREEN);
+        }
+        // if password length is less than 8
+        if (password.length() < 8) {
+            charcount.setTextColor(Color.RED);
+        } else {
+            charcount.setTextColor(Color.GREEN);
         }
     }
 
@@ -113,12 +155,12 @@ public class RegisterActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(String... strings) {
             try {
-                con = connectionClass(ConnectionSQLServer.username.toString(), ConnectionSQLServer.password.toString(), ConnectionSQLServer.database.toString(), ConnectionSQLServer.ip.toString(), ConnectionSQLServer.port.toString());
+                con = connectionClass(ConnectionSQLServer.username, ConnectionSQLServer.password, ConnectionSQLServer.database, ConnectionSQLServer.ip, ConnectionSQLServer.port);
                 if (con == null){
                     z = "Check your Internet Connection";
                 }
                 else{
-                    String sql = "Insert into DBO.registroUsuario(nameU,lastName,email,password) values ('"+name.getText().toString()+"','"+lastName.getText().toString()+"','"+email.getText().toString()+"','"+password.getText().toString()+"')";
+                    String sql = "Insert into DBO.RegisterUser(name,lastName,email,password) values ('"+name.getText().toString()+"','"+lastName.getText().toString()+"','"+email.getText().toString()+"','"+password.getText().toString()+"')";
                     stmt = con.createStatement();
                     stmt.executeUpdate(sql);
                 }
