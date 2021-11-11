@@ -33,14 +33,14 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.fragment_home);
 
         sessionManager = new SessionManager(getApplicationContext());
 
-        emaillogin    = (EditText)findViewById(R.id.emaillogin);
-        passwordlogin = (EditText)findViewById(R.id.passwordlogin);
-        loginbtn      = (Button)findViewById(R.id.loginbtn);
-        regbtn        = (Button)findViewById(R.id.regbtn);
+        emaillogin    = findViewById(R.id.emaillogin);
+        passwordlogin = findViewById(R.id.passwordlogin);
+        loginbtn      = findViewById(R.id.loginbtn);
+        regbtn        = findViewById(R.id.regbtn);
 
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -133,7 +133,7 @@ public class LoginActivity extends AppCompatActivity {
             String connectionURL;
             try {
                 Class.forName("net.sourceforge.jtds.jdbc.Driver");
-                connectionURL = "jdbc:jtds:sqlserver://" + server + "/"+ port + ";" + "database name: =" + database + ";username =" + username + ";password =" + password + ";";
+                connectionURL = "jdbc:jtds:sqlserver://" + server + "/"+ port + ";" + "database name = " + database + ";username = " + username + ";password = " + password + ";";
                 connection = DriverManager.getConnection(connectionURL);
             } catch (Exception e) {
                 Log.e("SQL Connection Error", e.getMessage());

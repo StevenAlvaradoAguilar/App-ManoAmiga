@@ -3,7 +3,6 @@
     package="com.example.registeractivity">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -14,9 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RegisterActivity"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name=".ChatActivity"
-            android:exported="false" />
         <activity
             android:name=".AlertActivity"
             android:exported="false" />

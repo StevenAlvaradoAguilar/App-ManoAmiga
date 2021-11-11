@@ -100,7 +100,7 @@ public class RegisterActivity extends AppCompatActivity {
         // check for pattern
         Pattern uppercase = Pattern.compile("[A-Z]");
         Pattern lowercase = Pattern.compile("[a-z]");
-        Pattern digit = Pattern.compile("[0-9]");
+        Pattern digit     = Pattern.compile("[0-9]");
 
         // if lowercase character is not present
         if (!lowercase.matcher(password).find()) {
@@ -127,8 +127,10 @@ public class RegisterActivity extends AppCompatActivity {
         // if password length is less than 8
         if (password.length() < 8) {
             charcount.setTextColor(Color.RED);
+            Toast.makeText(this,"Verificar la contraseña ingresada!", Toast.LENGTH_LONG).show();
         } else {
             charcount.setTextColor(Color.GREEN);
+            Toast.makeText(this,"Contraseña Validada Satisfactoriamente!", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -160,7 +162,7 @@ public class RegisterActivity extends AppCompatActivity {
                     z = "Check your Internet Connection";
                 }
                 else{
-                    String sql = "Insert into DBO.RegisterUser(name,lastName,email,password) values ('"+name.getText().toString()+"','"+lastName.getText().toString()+"','"+email.getText().toString()+"','"+password.getText().toString()+"')";
+                    String sql = "Insert into RegisterUser(_name,lastName,email,password) values ('"+name.getText().toString()+"','"+lastName.getText().toString()+"','"+email.getText().toString()+"','"+password.getText().toString()+"')";
                     stmt = con.createStatement();
                     stmt.executeUpdate(sql);
                 }
@@ -182,7 +184,7 @@ public class RegisterActivity extends AppCompatActivity {
         String connectionURL;
         try {
             Class.forName("net.sourceforge.jtds.jdbc.Driver");
-            connectionURL = "jdbc:jtds:sqlserver://" + server + ":" + port  + ";database name =" + database + ";username =" + username + ";password =" + password + ";";
+            connectionURL = "jdbc:jtds:sqlserver://" + server + "/" + port  + ";database name = " + database + ";username = " + username + ";password = " + password + ";";
             connection    = DriverManager.getConnection(connectionURL);
         }catch (Exception e){
             Log.e("SQL connection error", e.getMessage());
