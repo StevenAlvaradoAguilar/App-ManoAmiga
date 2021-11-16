@@ -1,144 +1,64 @@
 package com.example.registeractivity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.StrictMode;
-import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.registeractivity.Connection.ConnectionSQLServer;
-import com.example.registeractivity.Session.SessionManager;
+import androidx.appcompat.app.AppCompatActivity;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import com.example.registeractivity.Connection.AdminSQLiteOpenHelper;
 
 public class LoginActivity extends AppCompatActivity {
 
-    EditText emaillogin,passwordlogin;
-    Button loginbtn,regbtn;
+    EditText username,password;
+    Button loginbtn,regbtn,recoveryPasswordbtn;
 
-    Connection con;
 
-    SessionManager sessionManager;
+    AdminSQLiteOpenHelper DB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_home);
+        setContentView(R.layout.activity_login);
 
-        sessionManager = new SessionManager(getApplicationContext());
 
-        emaillogin    = findViewById(R.id.emaillogin);
-        passwordlogin = findViewById(R.id.passwordlogin);
-        loginbtn      = findViewById(R.id.loginbtn);
-        regbtn        = findViewById(R.id.regbtn);
+        username = findViewById(R.id.username);
+        password = findViewById(R.id.password);
+        loginbtn = findViewById(R.id.loginbtn);
+        regbtn   = findViewById(R.id.regbtn);
+        recoveryPasswordbtn = findViewById(R.id.recoveryPasswordbtn);
+        DB = new AdminSQLiteOpenHelper(this);
 
-        loginbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new LoginActivity.checkLogin().execute("");
-            }
-        });
+        loginbtn.setOnClickListener(v -> {
+            String usuario     = username.getText().toString();
+            String contrasenna = password.getText().toString();
 
-        regbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-    }
-
-    public class checkLogin extends AsyncTask<String, String, String> {
-
-        String z = null;
-        Boolean isSuccess = false;
-
-        @Override
-        protected void onPreExecute() {
-
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-
-        }
-
-        @Override
-        protected String doInBackground(String... strings) {
-            String email = emaillogin.getText().toString();
-            String password = passwordlogin.getText().toString();
-            con = connectionClass(ConnectionSQLServer.username, ConnectionSQLServer.password, ConnectionSQLServer.database, ConnectionSQLServer.ip, ConnectionSQLServer.port);
-            if (con == null) {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast.makeText(LoginActivity.this, "Check Internet Connection", Toast.LENGTH_LONG).show();
-                    }
-                });
-                z = "On Internet Connection";
-            } else {
-                try {
-                    String sql = "SELECT * from RegisterUser WHERE email = '" + emaillogin.getText() + "' AND password = '" + passwordlogin.getText() + "'";
-                    Statement stmt = con.createStatement();
-                    ResultSet rs   = stmt.executeQuery(sql);
-
-                    if (rs.next()) {
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                Toast.makeText(LoginActivity.this, "Login Success", Toast.LENGTH_LONG).show();
-                            }
-                        });
-                        z = "Success";
-
-                        sessionManager.createLoginSession(email,password);
-
-                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                        startActivity(intent);
-                        finish();
-                    } else {
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                Toast.makeText(LoginActivity.this, "Check email or password", Toast.LENGTH_LONG).show();
-                            }
-                        });
-                        emaillogin.setText("");
-                        passwordlogin.setText("");
-                    }
-                } catch (Exception e) {
-                    isSuccess = false;
-                    Log.e("SQL Error: ", e.getMessage());
+            if(username.equals("")||contrasenna.equals(""))
+                Toast.makeText(LoginActivity.this, "Por favor ingrese todos los campos", Toast.LENGTH_SHORT).show();
+            else{
+                Boolean checkuserpass = DB.checkusernamepassword(usuario, contrasenna);
+                if(checkuserpass==true){
+                    Toast.makeText(LoginActivity.this, "Inicio de sesión correcto", Toast.LENGTH_SHORT).show();
+                    Intent intent  = new Intent(getApplicationContext(), AlertActivity.class);
+                    startActivity(intent);
+                }else{
+                    Toast.makeText(LoginActivity.this, "Credenciales inválidas", Toast.LENGTH_SHORT).show();
                 }
             }
-            return z;
-        }
+        });
 
-        @SuppressLint("NewApi")
-        public Connection connectionClass(String username, String password, String database, String server, String port) {
-            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-            StrictMode.setThreadPolicy(policy);
-            Connection connection = null;
-            String connectionURL;
-            try {
-                Class.forName("net.sourceforge.jtds.jdbc.Driver");
-                connectionURL = "jdbc:jtds:sqlserver://" + server + "/"+ port + ";" + "database name = " + database + ";username = " + username + ";password = " + password + ";";
-                connection = DriverManager.getConnection(connectionURL);
-            } catch (Exception e) {
-                Log.e("SQL Connection Error", e.getMessage());
-            }
-            return connection;
-        }
+        regbtn.setOnClickListener(v -> {
+            Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+            startActivity(intent);
+            finish();
+        });
+
+        recoveryPasswordbtn.setOnClickListener(v -> {
+            Intent intent = new Intent(LoginActivity.this,RecoveryActivity.class);
+            startActivity(intent);
+            finish();
+        });
     }
 }

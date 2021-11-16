@@ -7,35 +7,65 @@
     tools:context=".AlertActivity"
     android:background="#FFDCD9">
 
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="81dp"
-        android:layout_height="85dp"
+    <ImageButton
+        android:id="@+id/backbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="101dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="21dp"
-        android:layout_marginEnd="308dp"
-        android:layout_marginBottom="612dp"
-        android:contentDescription="@string/todo"
+        android:layout_marginStart="38dp"
+        android:layout_marginEnd="274dp"
+        android:layout_marginBottom="559dp"
+        android:contentDescription="@string/cambiar_de_perfil"
+        android:orientation="vertical"
+        app:srcCompat="@drawable/back"
+        tools:ignore="ImageContrastCheck" />
+
+    <ImageButton
+        android:id="@+id/profilebtn"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="287dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="559dp"
+        android:contentDescription="@string/cambiar_de_perfil"
         android:orientation="vertical"
         app:srcCompat="@drawable/helping"
         tools:ignore="ImageContrastCheck" />
 
-    <Button
+    <ImageButton
         android:id="@+id/alertbtn"
         android:layout_width="wrap_content"
-        android:layout_height="98dp"
-        android:layout_above="@+id/imageView2"
+        android:layout_height="175dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="88dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="52dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginBottom="177dp"
+        android:contentDescription="@string/todo"
+        android:orientation="vertical"
+        app:srcCompat="@drawable/alert"
+        tools:ignore="ImageContrastCheck" />
+
+    <Button
+        android:id="@+id/emergencyCallbtn"
+        android:layout_width="243dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="85dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="101dp"
-        android:layout_marginBottom="14dp"
-        android:backgroundTint="#FF8F6152"
+        android:layout_marginEnd="83dp"
+        android:layout_marginBottom="89dp"
+        android:backgroundTint="#D10F0F"
         android:minHeight="48dp"
-        android:text="@string/alert"
+        android:text="@string/llamar_al_911"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         android:textStyle="bold|italic" />
@@ -47,27 +77,13 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="23dp"
+        android:layout_marginStart="22dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="22dp"
-        android:layout_marginBottom="471dp"
+        android:layout_marginEnd="23dp"
+        android:layout_marginBottom="388dp"
         android:text="@string/en_el_momento_que_te_sientas_en_peligro_presiona_el_bot_n_de_abajo_para_generar_una_alerta"
-        android:textColor="#FF8F6152"
+        android:textColor="#000000"
         android:textSize="25sp"
         android:textStyle="bold|italic" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="match_parent"
-        android:layout_height="341dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="0dp"
-        android:contentDescription="@string/todo"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="0.293"
-        app:srcCompat="@drawable/login_bgbueno" />
 
 </RelativeLayout>

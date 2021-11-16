@@ -4,35 +4,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GenerateAlertFragment"
-    android:background="#FFDCD9">
+    android:orientation="vertical"
+    tools:context=".ResponseActivity"
+    android:background="#8F6152">
 
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="81dp"
-        android:layout_height="85dp"
+    <ImageButton
+        android:id="@+id/backbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="107dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="313dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="618dp"
-        android:contentDescription="@string/todo"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="280dp"
+        android:layout_marginBottom="560dp"
+        android:contentDescription="Volver al inicio"
         android:orientation="vertical"
-        app:srcCompat="@drawable/askalert"
+        app:srcCompat="@drawable/back"
         tools:ignore="ImageContrastCheck" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="81dp"
-        android:layout_height="85dp"
+    <ImageButton
+        android:id="@+id/profilebtn"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="313dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="618dp"
-        android:contentDescription="@string/todo"
+        android:layout_marginStart="290dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginBottom="561dp"
+        android:contentDescription="@string/cambiar_de_perfil"
         android:orientation="vertical"
         app:srcCompat="@drawable/helping"
         tools:ignore="ImageContrastCheck" />
@@ -44,27 +45,31 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="23dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="22dp"
-        android:layout_marginBottom="471dp"
+        android:layout_marginEnd="21dp"
+        android:layout_marginBottom="433dp"
         android:text="Si quieres ayudar a algún Sinis selecciona alguna de las alertas de abajo"
-        android:textColor="#FF8F6152"
+        android:textColor="#FFFFFF"
         android:textSize="25sp"
         android:textStyle="bold|italic" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="match_parent"
-        android:layout_height="341dp"
+    <ImageButton
+        android:id="@+id/list_item"
+        android:layout_width="321dp"
+        android:layout_height="336dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="0dp"
-        android:contentDescription="@string/todo"
+        android:layout_marginStart="44dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="76dp"
+        android:contentDescription="TODO"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintVertical_bias="0.293"
-        app:srcCompat="@drawable/login_bgbueno" />
+        app:srcCompat="@drawable/listofsinis" />
 
 </RelativeLayout>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AlertDetailsActivity"
+    android:background="#FFDCD9">
+
+    <ImageView
+        android:id="@+id/imageClock"
+        android:layout_width="match_parent"
+        android:layout_height="133dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="540dp"
+        android:contentDescription="TODO"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/timer" />
+
+    <TextView
+        android:id="@+id/state"
+        android:layout_width="264dp"
+        android:layout_height="36dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="74dp"
+        android:layout_marginBottom="450dp"
+        android:text="@string/estado_de_la_alerta"
+        android:textColor="#CF180A"
+        android:textSize="25sp"
+        android:textStyle="bold|italic"
+        tools:layout_editor_absoluteX="73dp"
+        tools:layout_editor_absoluteY="266dp" />
+
+    <TextView
+        android:id="@+id/message"
+        android:layout_width="307dp"
+        android:layout_height="52dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="60dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="353dp"
+        android:text="En busca de un Dextra..."
+        android:textColor="#8F6152"
+        android:textSize="25sp"
+        android:textStyle="bold|italic"
+        tools:layout_editor_absoluteX="73dp"
+        tools:layout_editor_absoluteY="266dp" />
+
+    <Button
+        android:id="@+id/emergencyCallbtn"
+        android:layout_width="243dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="85dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="83dp"
+        android:layout_marginBottom="195dp"
+        android:backgroundTint="#D10F0F"
+        android:minHeight="48dp"
+        android:text="@string/llamar_al_911"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:textStyle="bold|italic" />
+
+    <Button
+        android:id="@+id/cancelbtn"
+        android:layout_width="243dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="85dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="83dp"
+        android:layout_marginBottom="115dp"
+        android:backgroundTint="#D10F0F"
+        android:minHeight="48dp"
+        android:text="Cancelar Alerta"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:textStyle="bold|italic" />
+
+</RelativeLayout>

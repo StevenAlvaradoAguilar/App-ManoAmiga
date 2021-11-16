@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RecoveryActivity"
+    android:orientation="vertical"
+    android:background="#FFDCD9">
+
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="435dp"
+        android:text="@string/su_cuenta_ha_sido_bloqueada_despu_s_de_fallar_su_contrase_a_3_veces_seguidas_un_c_digo_ha_sido_enviado_a_su_correo_favor_ingresarlo_en_el_espacio_correspondiente_para_cambiar_su_contrase_a_y_recuperar_su_cuenta"
+        android:textColor="#FF8F6152"
+        android:textSize="25sp"
+        android:textStyle="bold|italic" />
+
+    <EditText
+        android:id="@+id/coderecovery"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="87dp"
+        android:layout_marginBottom="332dp"
+        android:hint="@string/codigo_de_recuperacion"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:textColor="#FF8F6152"
+        android:textSize="25sp"
+        android:textStyle="bold|italic" />
+
+    <EditText
+        android:id="@+id/confirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="188dp"
+        android:hint="Nueva Contraseña "
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:textColor="#FF8F6152"
+        android:textSize="25dp"
+        android:textStyle="bold|italic" />
+
+    <Button
+        android:id="@+id/getIntobtn"
+        android:layout_width="225dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="92dp"
+        android:layout_marginEnd="92dp"
+        android:layout_marginBottom="255dp"
+        android:backgroundTint="#FF83C5BE"
+        android:text="@string/ingresar"
+        android:textColor="#616161"
+        android:textSize="18sp"
+        android:textStyle="bold|italic" />
+
+    <Button
+        android:id="@+id/confirmbtn"
+        android:layout_width="225dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="92dp"
+        android:layout_marginEnd="92dp"
+        android:layout_marginBottom="118dp"
+        android:backgroundTint="#FF83C5BE"
+        android:text="@string/confirmar"
+        android:textColor="#616161"
+        android:textSize="18sp"
+        android:textStyle="bold|italic" />
+
+</RelativeLayout>

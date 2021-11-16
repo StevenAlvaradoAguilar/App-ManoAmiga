@@ -14,4 +14,11 @@
     <string name="todo1">TODO</string>
     <string name="aceptar_alerta">Aceptar alerta</string>
     <string name="inicio">Inicio</string>
+    <string name="su_cuenta_ha_sido_bloqueada_despu_s_de_fallar_su_contrase_a_3_veces_seguidas_un_c_digo_ha_sido_enviado_a_su_correo_favor_ingresarlo_en_el_espacio_correspondiente_para_cambiar_su_contrase_a_y_recuperar_su_cuenta">Su cuenta ha sido bloqueada después de fallar su contraseña 3 veces seguidas, un código ha sido enviado a su correo, favor ingresarlo en el espacio correspondiente para cambiar su contraseña y recuperar su cuenta.</string>
+    <string name="codigo_de_recuperacion">Código de recuperación</string>
+    <string name="cambiar_de_perfil">Cambiar de perfil</string>
+    <string name="llamar_al_911">Llamar al 911</string>
+    <string name="ingresar">Ingresar</string>
+    <string name="confirmar">Confirmar</string>
+    <string name="estado_de_la_alerta">Estado de la alerta:</string>
 </resources>
