@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.registeractivity.Connection.AdminSQLiteOpenHelper;
 
+import java.util.regex.Pattern;
+
 public class LoginActivity extends AppCompatActivity {
 
     EditText username,password;
@@ -35,17 +37,23 @@ public class LoginActivity extends AppCompatActivity {
             String usuario     = username.getText().toString();
             String contrasenna = password.getText().toString();
 
-            if(username.equals("")||contrasenna.equals(""))
-                Toast.makeText(LoginActivity.this, "Por favor ingrese todos los campos", Toast.LENGTH_SHORT).show();
-            else{
-                Boolean checkuserpass = DB.checkusernamepassword(usuario, contrasenna);
-                if(checkuserpass==true){
-                    Toast.makeText(LoginActivity.this, "Inicio de sesión correcto", Toast.LENGTH_SHORT).show();
-                    Intent intent  = new Intent(getApplicationContext(), AlertActivity.class);
-                    startActivity(intent);
-                }else{
-                    Toast.makeText(LoginActivity.this, "Credenciales inválidas", Toast.LENGTH_SHORT).show();
+            Pattern validationpassword = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$_–/]).{8,20}$");
+
+            if(validationpassword.matcher(contrasenna).find()){
+                if(usuario.equals("")||contrasenna.equals(""))
+                    Toast.makeText(LoginActivity.this, "Por favor ingrese todos los campos", Toast.LENGTH_SHORT).show();
+                else{
+                    Boolean checkuserpass = DB.checkusernamepassword(usuario, contrasenna);
+                    if(checkuserpass==true){
+                        Toast.makeText(LoginActivity.this, "Inicio de sesión correcto", Toast.LENGTH_SHORT).show();
+                        Intent intent  = new Intent(getApplicationContext(), AlertActivity.class);
+                        startActivity(intent);
+                    }else{
+                        Toast.makeText(LoginActivity.this, "Credenciales inválidas", Toast.LENGTH_SHORT).show();
+                    }
                 }
+            }else{
+                Toast.makeText(LoginActivity.this, "Por favor seguir el formato de contraseña con al menos 8 caracteres, una mayúscula, una minúscula, un número y al menos uno de los siguientes caracteres @ # $ _ – /", Toast.LENGTH_SHORT).show();
             }
         });
 
